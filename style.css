@@ -1,0 +1,416 @@
+/* GLOBAL STYLES & RESET */
+:root {
+    --dark-bg: #111111;
+    --card-bg: #1b1b1b;
+    --text-color: #ffffff;
+    --highlight-color: #ffc107; /* The yellow/gold accent color */
+    --secondary-text: #b0b0b0;
+    --body-font: 'Arial', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    font-family: var(--body-font);
+    line-height: 1.6;
+}
+
+a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+ul {
+    list-style: none;
+}
+
+/* === HEADER/NAVIGATION STYLES === */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--dark-bg);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+header nav ul {
+    display: flex;
+    gap: 25px;
+}
+
+header nav ul li a {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: var(--secondary-text);
+    padding-bottom: 5px;
+}
+
+header nav ul li a.active,
+header nav ul li a:hover {
+    color: var(--text-color);
+    border-bottom: 2px solid var(--highlight-color);
+}
+
+/* === UTILITY/BUTTON STYLES === */
+.btn {
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-primary {
+    background-color: var(--highlight-color);
+    color: var(--dark-bg);
+    border: 1px solid var(--highlight-color);
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--highlight-color);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-color);
+    border: 1px solid var(--secondary-text);
+}
+
+.btn-secondary:hover {
+    border-color: var(--highlight-color);
+    color: var(--highlight-color);
+}
+
+/* === SECTION STYLES === */
+section {
+    padding: 100px 8%;
+    min-height: 100vh; /* Ensures sections take up full viewport height */
+}
+
+.section-title-wrapper {
+    position: relative;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title-wrapper h2 {
+    font-size: 3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
+    color: var(--text-color);
+}
+
+/* Overlay/ghost text effect from template */
+.section-title-wrapper::before {
+    content: attr(data-title); /* You could use data attributes, but for simplicity: */
+    content: "TITLE"; /* Use this if you don't want to use data-title attribute */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 8rem;
+    color: var(--card-bg); /* Lighter background color */
+    opacity: 0.4;
+    z-index: 1;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+/* === HERO SECTION STYLES === */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 50px; /* Adjusting for sticky header */
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 50%;
+}
+
+.hero-content .greeting {
+    color: var(--highlight-color);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.hero-content h1 strong {
+    color: var(--highlight-color);
+}
+
+.hero-content .role {
+    font-size: 1.5rem;
+    color: var(--secondary-text);
+    margin-bottom: 40px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.hero-image-container {
+    flex: 1;
+    text-align: right;
+}
+
+.hero-image {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px; /* Optional: adjust as needed */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Optional: subtle shadow */
+}
+
+/* === ABOUT SECTION STYLES === */
+.about-section {
+    min-height: auto; /* Allow content to dictate height */
+    padding-top: 50px;
+}
+
+.about-container {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+}
+
+.about-image-container {
+    flex: 1;
+    position: relative;
+    max-width: 400px;
+}
+
+.about-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.stats-box {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--highlight-color);
+    color: var(--dark-bg);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.about-info {
+    flex: 2;
+}
+
+.intro-text {
+    font-style: italic;
+    color: var(--secondary-text);
+    margin-bottom: 30px;
+    border-left: 3px solid var(--highlight-color);
+    padding-left: 15px;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px 30px;
+    margin-bottom: 30px;
+}
+
+.details-grid .label {
+    font-weight: bold;
+    color: var(--text-color);
+    margin-right: 5px;
+}
+
+.details-grid .value {
+    color: var(--secondary-text);
+}
+
+.cv-btn {
+    margin-top: 10px;
+}
+
+/* === SKILLS SECTION STYLES === */
+.skills-section {
+    min-height: auto;
+    padding-top: 50px;
+}
+
+.skills-intro-text {
+    text-align: center;
+    color: var(--secondary-text);
+    margin-bottom: 40px;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px 60px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.skill-item {
+    padding: 10px 0;
+}
+
+.skill-name {
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.progress-bar-container {
+    position: relative;
+    background-color: var(--card-bg);
+    height: 8px;
+    border-radius: 4px;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--highlight-color);
+    border-radius: 4px;
+    transition: width 1s ease-out;
+}
+
+.progress-percentage {
+    position: absolute;
+    top: -25px;
+    right: 0;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--secondary-text);
+}
+
+.empty-slot {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 0;
+}
+
+.empty-slot i {
+    font-size: 1.5rem;
+    color: var(--secondary-text);
+    border: 2px solid var(--secondary-text);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: color 0.3s, border-color 0.3s;
+}
+
+.empty-slot i:hover {
+    color: var(--highlight-color);
+    border-color: var(--highlight-color);
+}
+
+/* === MEDIA QUERIES for Responsiveness === */
+
+@media (max-width: 1024px) {
+    header {
+        padding: 20px 5%;
+    }
+    section {
+        padding: 80px 5%;
+    }
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+    .section-title-wrapper::before {
+        font-size: 6rem;
+    }
+    
+    .about-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .about-image-container {
+        margin-bottom: 40px;
+    }
+    
+    .about-info {
+        max-width: 100%;
+    }
+    
+    .details-grid {
+        justify-content: center;
+        text-align: left;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 5%;
+    }
+    header nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px 10px;
+    }
+    .hero-section {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+    .hero-content {
+        max-width: 100%;
+    }
+    .hero-image-container {
+        margin-bottom: 40px;
+    }
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    .hero-buttons {
+        justify-content: center;
+    }
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    .section-title-wrapper::before {
+        font-size: 4rem;
+    }
+}
